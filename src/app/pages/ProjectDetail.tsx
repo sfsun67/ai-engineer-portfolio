@@ -22,13 +22,13 @@ interface ProjectData {
 const projectData: Record<string, ProjectData> = {
   "agent-system": {
     title: {
-      zh: "AI广告视频混剪智能体系统",
+      zh: "AI广告视频混剪智能体系统（建设中...）",
       en: "AI Ad Video Agent System",
     },
     emoji: "🎬",
     description: {
-      zh: "三七互娱 | MCP / Agent Runtime / vLLM / Milvus / Redis",
-      en: "37 Interactive | MCP / Agent Runtime / vLLM / Milvus / Redis",
+      zh: "MCP / Agent Runtime / vLLM / Milvus / Redis",
+      en: "MCP / Agent Runtime / vLLM / Milvus / Redis",
     },
     tldr: {
       zh: "独立设计面向Agent的执行运行时，结合上下文工程与工具链服务化，实现广告视频混剪全流程自动化，累计投放37条广告，新增用户约万人。",
@@ -67,13 +67,13 @@ const projectData: Record<string, ProjectData> = {
   },
   "rag-engine": {
     title: {
-      zh: "AI内容运营全链路智能体系统",
+      zh: "AI内容运营全链路智能体系统（建设中...）",
       en: "AI Content Ops Agent System",
     },
     emoji: "📱",
     description: {
-      zh: "三七互娱 | Multi-Agent / RAG / VLM",
-      en: "37 Interactive | Multi-Agent / RAG / VLM",
+      zh: "Multi-Agent / RAG / VLM",
+      en: "Multi-Agent / RAG / VLM",
     },
     tldr: {
       zh: "负责项目整体方案推进，设计多模态混合检索架构，实现近万张广告素材自动化处理与社交媒体内容自动发布，日均处理素材400余条。",
@@ -112,7 +112,7 @@ const projectData: Record<string, ProjectData> = {
   },
   "ai-bi": {
     title: {
-      zh: "AI短剧平台SkyReels",
+      zh: "AI短剧平台SkyReels（建设中...）",
       en: "AI Short Drama Platform SkyReels",
     },
     emoji: "🎬",
@@ -121,7 +121,7 @@ const projectData: Record<string, ProjectData> = {
       en: "Kunlun Skywork AI | Multi-Agent / RAG / Data Flywheel",
     },
     tldr: {
-      zh: "参与AI短剧平台SkyReels的Agent系统设计与开发，负责60%核心代码，推动产品上线北美地区。同时参与小说生成大模型训练与多模态训练数据建设。",
+      zh: "参与AI短剧平台SkyReels（建设中...）的Agent系统设计与开发，负责60%核心代码，推动产品上线北美地区。同时参与小说生成大模型训练与多模态训练数据建设。",
       en: "Contributed to SkyReels AI short drama platform's Agent system design and development, responsible for 60% of core code, driving product launch in North America. Also participated in novel generation LLM training and multimodal training data pipelines.",
     },
     whyItMatters: {
@@ -157,7 +157,7 @@ const projectData: Record<string, ProjectData> = {
   },
   "eval-framework": {
     title: {
-      zh: "社会模拟多智能体系统",
+      zh: "社会模拟多智能体系统（建设中...）",
       en: "Social Simulation Multi-Agent System",
     },
     emoji: "🧠",
@@ -166,7 +166,7 @@ const projectData: Record<string, ProjectData> = {
       en: "China Telecom AI Research | Cognitive Psychology / Multi-Agent / Model Alignment",
     },
     tldr: {
-      zh: "基于认知心理学框架构建社会模拟多智能体系统，生成1.8w+场景数据，将7B+模型角色扮演性能提升90%以上，社会能力评测从75%提升至90%。",
+      zh: "基于认知心理学框架构建社会模拟多智能体系统（建设中...），生成1.8w+场景数据，将7B+模型角色扮演性能提升90%以上，社会能力评测从75%提升至90%。",
       en: "Built a social simulation multi-agent system based on cognitive psychology frameworks, generating 18K+ scenario data, improving 7B+ model role-playing performance by 90%+, and social capability scores from 75% to 90%.",
     },
     whyItMatters: {

@@ -12,7 +12,7 @@ export function Demo() {
   const { t } = useLanguage();
 
   const handleCopyContact = () => {
-    navigator.clipboard.writeText("algorithm.engineer@example.com / WeChat: ai_super_agent");
+    navigator.clipboard.writeText("sunshifeng67@foxmail.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };

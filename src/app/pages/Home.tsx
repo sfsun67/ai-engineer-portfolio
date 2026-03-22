@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import { Code, Brain, Target, Rocket, ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { Code, Brain, Target, Rocket, ArrowUpRight, CheckCircle2, Mail } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 
 type Category = "all" | "algorithm" | "engineering" | "product" | "founder";
@@ -24,7 +24,7 @@ const projects: Project[] = [
   {
     id: "agent-system",
     title: {
-      zh: "AI广告视频混剪智能体系统",
+      zh: "AI广告视频混剪智能体系统（建设中...）",
       en: "AI Ad Video Agent System",
     },
     description: {
@@ -33,7 +33,7 @@ const projects: Project[] = [
     },
     categories: ["algorithm", "engineering"],
     metrics: [
-      { zh: "累计投放37条广告", en: "37 Ads Deployed" },
+      { zh: "新增用户约万人", en: "~10K New Users" },
       { zh: "获客成本约30元", en: "~¥30 CAC" },
     ],
     theme: { bg: "bg-[#E43B44]", text: "text-white", shadow: "hover:shadow-[6px_6px_0px_#E43B44]" },
@@ -42,7 +42,7 @@ const projects: Project[] = [
   {
     id: "rag-engine",
     title: {
-      zh: "AI内容运营全链路智能体系统",
+      zh: "AI内容运营全链路智能体系统（建设中...）",
       en: "AI Content Ops Agent System",
     },
     description: {
@@ -60,7 +60,7 @@ const projects: Project[] = [
   {
     id: "ai-bi",
     title: {
-      zh: "AI短剧平台SkyReels",
+      zh: "AI短剧平台SkyReels（建设中...）",
       en: "AI Short Drama Platform SkyReels",
     },
     description: {
@@ -78,7 +78,7 @@ const projects: Project[] = [
   {
     id: "eval-framework",
     title: {
-      zh: "社会模拟多智能体系统",
+      zh: "社会模拟多智能体系统（建设中...）",
       en: "Social Simulation Multi-Agent System",
     },
     description: {
@@ -107,28 +107,74 @@ export function Home() {
 
   return (
     <div className="space-y-12 pb-16">
-      {/* Hero Section */}
-      <section className="bg-white border-2 border-black pixel-shadow p-8 sm:p-12 mt-6 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-[#4DA65C] opacity-10 rounded-bl-full" />
-        <div className="max-w-3xl space-y-6">
-          <div className="inline-flex items-center space-x-2 bg-[#E43B44] text-white px-3 py-1 font-bold text-sm uppercase tracking-wider border-2 border-black">
-            <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
-            <span>{t("正在求职中", "Available for Hire")}</span>
+      {/* Hero Section 重构版 */}
+      <section className="relative mt-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* 左侧：精炼的定位与介绍 */}
+          <div className="lg:col-span-7 space-y-8">
+            {/* 状态栏 - 移入此处以对齐右侧卡片顶部 */}
+            <div className="flex flex-wrap gap-4">
+              <div className="inline-flex items-center space-x-2 bg-[#E43B44] text-white px-3 py-1 font-bold text-sm uppercase tracking-wider border-2 border-black pixel-shadow-sm">
+                <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                <span>{t("Available for Hire", "Available for Hire")}</span>
+              </div>
+              <div className="inline-flex items-center space-x-2 bg-[#4DA65C] text-white px-3 py-1 font-bold text-sm uppercase tracking-wider border-2 border-black pixel-shadow-sm">
+                <Code className="w-4 h-4" />
+                <span>{t("站点构建中", "Building...")}</span>
+              </div>
+            </div>
+
+            <h1 className="text-5xl sm:text-7xl font-black tracking-tighter leading-[0.9] text-gray-900 font-sans uppercase">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1D79E4] via-[#4DA65C] to-[#F48B29]">
+                {t("算法 × 工程 × 产品", "Algorithms × Engineering × Product")}
+              </span>
+            </h1>
+
+            <p className="text-xl text-gray-600 font-sans leading-relaxed max-w-2xl">
+              {t(
+                "我不仅训练模型，更架构可落地的生产级系统、设计直觉化的用户体验，并交付真实的业务价值。从大模型科研到产品上线，具备完整AI实践路径。",
+                "I don't just train models. I architect scalable production systems, design intuitive user experiences, and deliver real business impact. From LLM research to production-grade engineering."
+              )}
+            </p>
+
+            <div className="flex items-center space-x-3 text-lg font-bold group">
+              <div className="w-10 h-10 flex items-center justify-center bg-black text-white border-2 border-black pixel-shadow-sm group-hover:bg-[#1D79E4] transition-colors">
+                <Mail className="w-5 h-5" />
+              </div>
+              <a href="mailto:sunshifeng67@foxmail.com" className="hover:underline decoration-2 underline-offset-4 transition-all">
+                sunshifeng67@foxmail.com
+              </a>
+            </div>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight text-gray-900 font-sans">
-            {t("AI时代超级个体。", "AI-Era Super Individual.")} <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1D79E4] to-[#4DA65C]">
-              {t("算法 × 工程 × 产品", "Algorithms × Engineering × Product")}
-            </span>
-          </h1>
+          {/* 右侧：将核心观点做成“宣言卡片” */}
+          <div className="lg:col-span-5 relative group self-stretch">
+            {/* 底部装饰性阴影块 */}
+            <div className="absolute inset-0 bg-black translate-x-3 translate-y-3 border-2 border-black"></div>
+            
+            {/* 宣言卡片本体 */}
+            <div className="relative bg-[#F4D330] border-2 border-black p-8 h-full flex flex-col justify-center transition-transform duration-200 group-hover:-translate-y-1 group-hover:-translate-x-1">
+              <div className="absolute top-4 right-4 text-black/20 font-serif text-6xl font-black leading-none">"</div>
+              
+              <h3 className="font-bold text-sm uppercase tracking-widest border-b-2 border-black/20 pb-2 mb-4">
+                {t("我的 AI 价值观", "My AI Manifesto")}
+              </h3>
+              
+              <p className="text-xl sm:text-2xl font-black text-gray-900 leading-snug font-sans">
+                {t(
+                  "AI 的下一个奇点不在于单纯的 Scaling Laws，而在于从单一模型能力，走向 Agent 系统的构建与人机交互的全面重构。",
+                  "The next AI singularity lies not in scaling parameters, but in the shift from single-model capabilities to Agent systems and the complete redesign of HCI."
+                )}
+              </p>
 
-          <p className="text-lg text-gray-600 font-sans max-w-2xl leading-relaxed">
-            {t(
-              "我不仅训练模型，更架构可落地的生产级系统、设计直觉化的用户体验，并交付真实的业务价值。从大模型科研到出海产品上线，再到生产级系统工程落地，具备完整AI实践路径。",
-              "I don't just train models. I architect scalable production systems, design intuitive user experiences, and deliver real business impact. From LLM research to overseas product launch to production-grade engineering — a complete AI practitioner's path."
-            )}
-          </p>
+              {/* 标签强调 */}
+              <div className="flex flex-wrap gap-2 mt-6">
+                <span className="bg-white border-2 border-black text-xs font-bold px-2 py-1 uppercase pixel-shadow-sm">Multi-Model</span>
+                <span className="bg-[#1D79E4] text-white border-2 border-black text-xs font-bold px-2 py-1 uppercase pixel-shadow-sm">Multi-Agent</span>
+                <span className="bg-[#4DA65C] text-white border-2 border-black text-xs font-bold px-2 py-1 uppercase pixel-shadow-sm">Harness-Engineering</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

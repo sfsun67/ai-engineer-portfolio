@@ -15,20 +15,20 @@ export type Project = {
 export const projectsData: Project[] = [
   {
     id: "agent-system",
-    title: "AI广告视频混剪智能体系统",
+    title: "AI广告视频混剪智能体系统（建设中...）",
     description: "独立设计面向Agent的执行运行时，结合上下文工程策略与工具链服务化，实现广告视频智能混剪全流程自动化。",
     roles: ["算法负责人", "工程负责人"],
     tags: ["Agent Runtime", "MCP", "vLLM", "Milvus", "Context Engineering"],
     imageQuery: "abstract artificial intelligence network",
-    metrics: ["累计投放37条广告", "获客成本约30元", "事业群集训优秀奖"],
+    metrics: ["新增用户约万人", "获客成本约30元"],
     systemDesign: "架构核心是自研的Agent执行运行时，将脚本规划、音频生成、多模态理解、媒体处理等能力拆分为决策节点与MCP Tool执行节点。上下文工程策略统一上下文表示与状态承载格式。工具链通过MCP协议服务化。",
     challenges: "长链路任务中上下文窗口膨胀的管理策略设计。Agent Runtime的容错与重试机制。多模态素材的统一处理与编排。",
-    outcomes: "累计投放37条广告，新增用户约万人，平均获客成本约30元。获得事业群集训优秀奖、集团AI大赛潜力奖。",
+    outcomes: "新增用户约万人，平均获客成本约30元。",
     reflection: "Agent系统的核心不在于模型能力，而在于Runtime的工程可靠性。上下文工程策略的设计比Prompt Engineering更重要。"
   },
   {
     id: "rag-engine",
-    title: "AI内容运营全链路智能体系统",
+    title: "AI内容运营全链路智能体系统（建设中...）",
     description: "基于Multi-Agent与多模态混合检索架构，实现广告文图素材自动化处理与社交媒体内容分发。",
     roles: ["工程负责人", "产品/业务负责人"],
     tags: ["Multi-Agent", "RAG", "VLM", "Hybrid Retrieval"],
@@ -41,7 +41,7 @@ export const projectsData: Project[] = [
   },
   {
     id: "ai-bi",
-    title: "AI短剧平台SkyReels",
+    title: "AI短剧平台SkyReels（建设中...）",
     description: "昆仑万维出海AI短剧产品，负责多智能体系统设计、RAG系统构建及多模态训练数据建设。",
     roles: ["产品/业务负责人", "算法负责人"],
     tags: ["Multi-Agent", "RAG", "Data Flywheel", "SkyReels"],
@@ -54,7 +54,7 @@ export const projectsData: Project[] = [
   },
   {
     id: "eval-framework",
-    title: "社会模拟多智能体系统",
+    title: "社会模拟多智能体系统（建设中...）",
     description: "基于认知心理学的角色扮演与社会模拟系统，构建大规模场景数据用于模型对齐与推理增强。",
     roles: ["算法负责人", "创始人/招聘经理"],
     tags: ["Cognitive Psychology", "Multi-Agent", "Model Alignment", "ReAct"],
