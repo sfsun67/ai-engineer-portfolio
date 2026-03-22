@@ -2,3 +2,8 @@
 @source '../**/*.{js,ts,jsx,tsx}';
 
 @import 'tw-animate-css';
+
+@theme inline {
+  --font-sans: "Noto Sans SC", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "LXGW WenKai Mono", ui-monospace, SFMono-Regular, "Menlo", monospace;
+}

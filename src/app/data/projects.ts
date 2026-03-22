@@ -2,8 +2,8 @@ export type Project = {
   id: string;
   title: string;
   description: string;
-  roles: string[]; // which role this appeals to
-  tags: string[]; // specific technical/biz tags
+  roles: string[];
+  tags: string[];
   imageQuery: string;
   metrics: string[];
   systemDesign?: string;
@@ -15,54 +15,54 @@ export type Project = {
 export const projectsData: Project[] = [
   {
     id: "agent-system",
-    title: "Autonomous Agent System",
-    description: "An intelligent autonomous agent framework capable of solving complex multi-step reasoning tasks with tool use.",
-    roles: ["算法负责人", "创始人/招聘经理"],
-    tags: ["Agent", "RAG", "System Design"],
-    imageQuery: "abstract artificial intelligence network",
-    metrics: ["94% Success Rate", "10x Productivity", "State-of-the-art"],
-    systemDesign: "The system is built on a ReAct architecture with a customized memory retrieval pipeline. It uses a dynamic tool-calling router that selects from over 50 custom APIs to fulfill user intents. The state machine is robustly handled using langgraph-inspired flows.",
-    challenges: "Handling context window limits when dealing with extensive tool documentation. Implemented a hierarchical summarize-and-retrieve mechanism to inject only relevant API schemas into the prompt.",
-    outcomes: "Reduced manual operation time by 80% for internal teams. Achieved a task completion rate of 94% on our internal benchmark, outperforming open-source baselines by 20%.",
-    reflection: "Building agents requires a deep understanding of both LLM capabilities and traditional software engineering. Next steps involve moving from zero-shot tool use to few-shot dynamically retrieved examples."
-  },
-  {
-    id: "rag-pipeline",
-    title: "Enterprise-Grade RAG Pipeline",
-    description: "High-performance Retrieval-Augmented Generation system with semantic routing and hybrid search.",
+    title: "AI广告视频混剪智能体系统",
+    description: "独立设计面向Agent的执行运行时，结合上下文工程策略与工具链服务化，实现广告视频智能混剪全流程自动化。",
     roles: ["算法负责人", "工程负责人"],
-    tags: ["RAG", "Performance", "Architecture"],
-    imageQuery: "server rack database glowing",
-    metrics: ["Sub-200ms Latency", "99.9% Uptime", "Hybrid Search"],
-    systemDesign: "Implemented a two-stage retrieval pipeline: Dense vector retrieval (using specialized embedding models) combined with BM25 sparse retrieval. Re-ranking is performed via a cross-encoder before final LLM synthesis.",
-    challenges: "The main challenge was latency. Vector similarity search over 50M+ documents was too slow. We optimized the HNSW index parameters and implemented a caching layer for common queries.",
-    outcomes: "System handles 10,000 QPS with p95 latency under 200ms. Improved answer accuracy by 35% compared to baseline dense retrieval.",
-    reflection: "Caching is king in production RAG. The hybrid approach is essential for handling keyword-heavy queries where semantic models often fail."
+    tags: ["Agent Runtime", "MCP", "vLLM", "Milvus", "Context Engineering"],
+    imageQuery: "abstract artificial intelligence network",
+    metrics: ["累计投放37条广告", "获客成本约30元", "事业群集训优秀奖"],
+    systemDesign: "架构核心是自研的Agent执行运行时，将脚本规划、音频生成、多模态理解、媒体处理等能力拆分为决策节点与MCP Tool执行节点。上下文工程策略统一上下文表示与状态承载格式。工具链通过MCP协议服务化。",
+    challenges: "长链路任务中上下文窗口膨胀的管理策略设计。Agent Runtime的容错与重试机制。多模态素材的统一处理与编排。",
+    outcomes: "累计投放37条广告，新增用户约万人，平均获客成本约30元。获得事业群集训优秀奖、集团AI大赛潜力奖。",
+    reflection: "Agent系统的核心不在于模型能力，而在于Runtime的工程可靠性。上下文工程策略的设计比Prompt Engineering更重要。"
   },
   {
-    id: "model-eval-framework",
-    title: "LLM Eval Framework",
-    description: "Comprehensive evaluation platform for testing large language models against business-specific domains.",
-    roles: ["算法负责人", "产品/业务负责人"],
-    tags: ["评测", "业务结果", "产能提升"],
-    imageQuery: "dashboard analytics charts modern",
-    metrics: ["50+ Benchmarks", "Automated CI/CD", "Biz Aligned"],
-    systemDesign: "A distributed testing framework that automatically triggers evals when new models are deployed. Uses a combination of LLM-as-a-judge and deterministic metrics (ROUGE, exact match).",
-    challenges: "Ensuring LLM-as-a-judge consistency. Solved by carefully designing rubrics and using a consensus mechanism with multiple smaller models.",
-    outcomes: "Shortened the model release cycle from weeks to days. Provided product managers with clear, actionable insights on model performance.",
-    reflection: "Evaluation is the true bottleneck of AI engineering. A robust eval framework is more valuable than marginally better models."
+    id: "rag-engine",
+    title: "AI内容运营全链路智能体系统",
+    description: "基于Multi-Agent与多模态混合检索架构，实现广告文图素材自动化处理与社交媒体内容分发。",
+    roles: ["工程负责人", "产品/业务负责人"],
+    tags: ["Multi-Agent", "RAG", "VLM", "Hybrid Retrieval"],
+    imageQuery: "content management dashboard modern",
+    metrics: ["处理近万张素材", "日均400+条", "自动化发布"],
+    systemDesign: "基于"感知—规划—记忆—行动"机制的Multi-Agent协作架构。多模态混合检索引擎支持BM25关键词、文本向量语义、图向量语义三路召回。",
+    challenges: "多源异构广告素材的统一表示与检索。日均400+条素材的高吞吐量处理与质量保障。",
+    outcomes: "处理近万张多源广告文图素材，自动化发表社交媒体内容数百篇，日均处理素材400余条。",
+    reflection: "多模态检索的关键在于表示空间的对齐，而非单纯提升单模态检索精度。"
   },
   {
-    id: "inference-engine",
-    title: "High-Throughput Inference Service",
-    description: "Highly optimized model serving infrastructure supporting dynamic batching and paged attention.",
-    roles: ["工程负责人", "创始人/招聘经理"],
-    tags: ["性能", "服务化", "稀缺性"],
-    imageQuery: "futuristic microchip glowing blue",
-    metrics: ["5x Throughput", "Zero Downtime", "Cost Reduced 60%"],
-    systemDesign: "Built on top of vLLM with custom scheduling algorithms. The API gateway handles load balancing, dynamic batching, and graceful degradation during traffic spikes.",
-    challenges: "Managing GPU memory fragmentation. Integrated PagedAttention to eliminate memory waste, allowing for significantly larger batch sizes.",
-    outcomes: "Increased inference throughput by 5x while reducing compute costs by 60%. Deployed across multiple regions with active-active failover.",
-    reflection: "Understanding hardware limits is just as important as the model architecture. Engineering excellence directly impacts the bottom line."
+    id: "ai-bi",
+    title: "AI短剧平台SkyReels",
+    description: "昆仑万维出海AI短剧产品，负责多智能体系统设计、RAG系统构建及多模态训练数据建设。",
+    roles: ["产品/业务负责人", "算法负责人"],
+    tags: ["Multi-Agent", "RAG", "Data Flywheel", "SkyReels"],
+    imageQuery: "film production creative ai",
+    metrics: ["Agent系统60%代码", "上线北美地区", "决赛8/639"],
+    systemDesign: "基于Workflow/ReAct范式的多智能体框架。RAG检索增强链路与Function Calling槽位抽取方案。数据飞轮机制构建训练链路。",
+    challenges: "多智能体间的协作一致性与任务调度。RAG系统在创意生成场景下的检索策略设计。",
+    outcomes: "负责Agent系统链路60%的代码生产与发布。AI短剧平台成功上线北美地区。优酷×天池挑战赛决赛第8名。",
+    reflection: "出海产品的技术挑战不仅在算法本身，更在于对目标市场内容偏好的理解与适配。"
+  },
+  {
+    id: "eval-framework",
+    title: "社会模拟多智能体系统",
+    description: "基于认知心理学的角色扮演与社会模拟系统，构建大规模场景数据用于模型对齐与推理增强。",
+    roles: ["算法负责人", "创始人/招聘经理"],
+    tags: ["Cognitive Psychology", "Multi-Agent", "Model Alignment", "ReAct"],
+    imageQuery: "brain neural network psychology",
+    metrics: ["1.8w+场景数据", "7B+模型性能↑90%", "社会能力75%→90%"],
+    systemDesign: "基于认知科学、心理学与语言学理论构建角色扮演/社会模拟结构化训练数据。角色—情景CoT数据链与RAG增强链路。ReAct多智能体协同框架。",
+    challenges: "认知心理学理论到计算模型的形式化转换。确保生成场景数据的多样性与真实性。",
+    outcomes: "构建1.8w+场景数据。7B+模型角色扮演性能提升90%以上，社会能力评测从75%提升至90%。",
+    reflection: "数据质量远比数据数量重要。认知心理学为AI对齐提供了有价值的理论框架。"
   }
 ];
