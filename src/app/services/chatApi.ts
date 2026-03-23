@@ -99,6 +99,9 @@ export async function sendChatStream(
     });
 
     if (!response.ok) {
+      if (response.status === 429) {
+        throw new Error("RATE_LIMIT_EXCEEDED");
+      }
       const text = await response.text();
       throw new Error(`API error ${response.status}: ${text}`);
     }

@@ -87,17 +87,16 @@ npm run build
 npm run preview
 ```
 
-  修改配置后如何重启                                                                                                                                             
-                                                                                                                                                                 
-  # 第一步：杀掉当前进程                                                                                                                                         
-  sudo fuser -k 443/tcp                                                                                                                                        
-                                                                                                                                                               
-  # 第二步：重新启动（后台运行，nohup 防止终端断开后进程退出）                                                                                                   
-  cd /home/dev/workspace/AI-Engineer-Portfolio                                                                                                                 
-  sudo nohup npm run dev > /tmp/vite.log 2>&1 &                                                                                                                  
-                                                                                                                                                               
-  或者在前台调试时直接：                                                                                                                                         
-  sudo npm run dev  
+修改配置后如何重启                                                                                                                                             
+                                                                                                                                                                
+# 第一步：杀掉当前进程                                                                                                                                         
+sudo fuser -k 443/tcp                                                                                                                                        
+                                                                                                                                                              
+# 第二步：重新启动（后台运行，nohup 防止终端断开后进程退出）                                                                                                   
+cd /home/dev/workspace/AI-Engineer-Portfolio && sudo nohup npm run dev > /tmp/vite.log 2>&1 &                                                                                                                 
+                                                                                                                                                              
+或者在前台调试时直接：                                                                                                                                         
+sudo npm run dev  
 
 ## 路由设计
 

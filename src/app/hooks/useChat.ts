@@ -3,6 +3,7 @@ import {
   sendChatStream,
   type ChatMessage,
 } from "@/app/services/chatApi";
+import { useLanguage } from "@/app/contexts/LanguageContext";
 
 const SYSTEM_MESSAGE: ChatMessage = {
   role: "system",
@@ -17,6 +18,7 @@ export interface DisplayMessage {
 }
 
 export function useChat() {
+  const { t } = useLanguage();
   const [messages, setMessages] = useState<DisplayMessage[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
@@ -66,14 +68,16 @@ export function useChat() {
             setIsLoading(false);
           },
           onError: (error) => {
+            const content =
+              error.message === "RATE_LIMIT_EXCEEDED"
+                ? t(
+                    "每个 IP 每十分钟只能和我聊十句哦，欢迎联系我的 Email: sunshifeng67@foxmail.com",
+                    "Each IP is limited to 10 messages per 10 minutes. Feel free to reach me at: sunshifeng67@foxmail.com"
+                  )
+                : `Error: ${error.message}`;
             setMessages((prev) =>
               prev.map((m) =>
-                m.id === assistantMsg.id
-                  ? {
-                      ...m,
-                      content: `Error: ${error.message}`,
-                    }
-                  : m
+                m.id === assistantMsg.id ? { ...m, content } : m
               )
             );
             setIsLoading(false);
