@@ -160,18 +160,18 @@ export function Home() {
                 {t("我的 AI 价值观", "My AI Manifesto")}
               </h3>
               
-              <p className="text-xl sm:text-2xl font-black text-gray-900 leading-snug font-sans">
+              <div className={`font-black text-gray-900 font-sans ${lang === 'zh' ? 'text-xl sm:text-2xl leading-snug' : 'text-lg sm:text-xl leading-tight tracking-tight'}`}>
                 {t(
                   "AI 的下一个奇点不在于单纯的 Scaling Laws，而在于从单一模型能力，走向 Agent 系统的构建与人机交互的全面重构。",
                   "The next AI singularity lies not in scaling parameters, but in the shift from single-model capabilities to Agent systems and the complete redesign of HCI."
                 )}
-              </p>
+              </div>
 
               {/* 标签强调 */}
               <div className="flex flex-wrap gap-2 mt-6">
                 <span className="bg-white border-2 border-black text-xs font-bold px-2 py-1 uppercase pixel-shadow-sm">Multi-Model</span>
                 <span className="bg-[#1D79E4] text-white border-2 border-black text-xs font-bold px-2 py-1 uppercase pixel-shadow-sm">Multi-Agent</span>
-                <span className="bg-[#4DA65C] text-white border-2 border-black text-xs font-bold px-2 py-1 uppercase pixel-shadow-sm">Harness-Engineering</span>
+                <span className="bg-[#4DA65C] text-white border-2 border-black text-xs font-bold px-2 py-1 uppercase pixel-shadow-sm">System-Engineering</span>
               </div>
             </div>
           </div>

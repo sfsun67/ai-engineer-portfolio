@@ -24,7 +24,7 @@ export const projectsData: Project[] = [
     systemDesign: "架构核心是自研的Agent执行运行时，将脚本规划、音频生成、多模态理解、媒体处理等能力拆分为决策节点与MCP Tool执行节点。上下文工程策略统一上下文表示与状态承载格式。工具链通过MCP协议服务化。",
     challenges: "长链路任务中上下文窗口膨胀的管理策略设计。Agent Runtime的容错与重试机制。多模态素材的统一处理与编排。",
     outcomes: "新增用户约万人，平均获客成本约30元。",
-    reflection: "Agent系统的核心不在于模型能力，而在于Runtime的工程可靠性。上下文工程策略的设计比Prompt Engineering更重要。"
+    reflection: "Agent系统的核心不在于模型能力，而在于Runtime的工程可靠性。Agent Harness 策略的设计比Prompt Engineering更重要。"
   },
   {
     id: "rag-engine",

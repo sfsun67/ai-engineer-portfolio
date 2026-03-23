@@ -35,7 +35,7 @@ const projectData: Record<string, ProjectData> = {
       en: "Independently designed an Agent-oriented execution runtime with context engineering and tool-chain services, fully automating the ad video remixing pipeline. Deployed 37 ads, acquiring ~10K new users.",
     },
     whyItMatters: {
-      zh: "传统广告素材制作依赖人工，效率低且难以规模化。通过Agent Runtime的自主规划与执行能力，将视频混剪从人工操作转为智能化流水线，大幅降低获客成本至约30元/人。",
+      zh: "传统广告素材制作依赖人工，效率低且难以规模化。通过Agent Runtime的自主规划与执行能力，将视频混剪从人工操作转为智能化流水线，可以将人效提升将近两个数量级。",
       en: "Traditional ad creative production relies on manual effort — slow and hard to scale. The Agent Runtime's autonomous planning and execution capability transforms video remixing into an intelligent pipeline, reducing customer acquisition cost to ~¥30/user.",
     },
     systemDesign: {
@@ -61,7 +61,7 @@ const projectData: Record<string, ProjectData> = {
       en: "Deployed 37 ads, acquiring ~10K new users at ~¥30 CAC. Average CTR and conversion rate outperformed manual production baselines. Estimated designer productivity improvement of several times. Won Business Group Training Excellence Award and Group AI Competition Potential Award.",
     },
     reflection: {
-      zh: "Agent系统的核心不在于模型能力，而在于Runtime的工程可靠性。上下文工程策略的设计比Prompt Engineering更重要，它决定了Agent在长任务中的稳定性与决策质量。",
+      zh: "Agent系统的核心不在于模型能力，而在于Runtime的工程可靠性。Agent Harness 策略的设计比Prompt Engineering更重要，它决定了Agent在长任务中的稳定性与决策质量。",
       en: "The core of an Agent system isn't model capability — it's Runtime engineering reliability. Context engineering strategy design matters more than prompt engineering; it determines Agent stability and decision quality in long-running tasks.",
     },
   },
