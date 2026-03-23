@@ -87,16 +87,26 @@ npm run build
 npm run preview
 ```
 
-修改配置后如何重启                                                                                                                                             
-                                                                                                                                                                
-# 第一步：杀掉当前进程                                                                                                                                         
-sudo fuser -k 443/tcp                                                                                                                                        
-                                                                                                                                                              
-# 第二步：重新启动（后台运行，nohup 防止终端断开后进程退出）                                                                                                   
-cd /home/dev/workspace/AI-Engineer-Portfolio && sudo nohup npm run dev > /tmp/vite.log 2>&1 &                                                                                                                 
-                                                                                                                                                              
-或者在前台调试时直接：                                                                                                                                         
-sudo npm run dev  
+## 生产部署（VPS）
+
+服务以 systemd 托管，开机自启，崩溃自动重启。服务文件位于 `/etc/systemd/system/portfolio.service`。
+
+```bash
+# 查看状态
+sudo systemctl status portfolio
+
+# 实时日志
+sudo journalctl -u portfolio -f
+
+# 重启（修改配置后）
+sudo systemctl restart portfolio
+
+# 停止 / 启动
+sudo systemctl stop portfolio
+sudo systemctl start portfolio
+```
+
+> Vite dev server 监听 `0.0.0.0:443`，SSL 证书路径：`/etc/ssl/cloudflare/sunshifeng.{pem,key}`
 
 ## 路由设计
 
