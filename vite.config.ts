@@ -30,8 +30,13 @@ export default defineConfig(({ mode }) => {
       ),
       proxy: {
         '/api': {
-          target: env.VITE_API_PROXY_TARGET || 'http://127.0.0.1:8000',
+          target: env.VITE_API_PROXY_TARGET || 'http://127.0.0.1:8321',
           changeOrigin: true,
+        },
+        '/literary-api': {
+          target: 'http://127.0.0.1:8321',
+          changeOrigin: true,
+          rewrite: (path: string) => path.replace(/^\/literary-api/, ''),
         },
       },
     },

@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { MessageSquare, Code, ArrowLeft, Copy, CheckCircle2, Terminal } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
+import { EvalFrameworkDemo } from "./demos/EvalFrameworkDemo";
 
 export function Demo() {
   const { id } = useParams();
@@ -24,8 +25,8 @@ export function Demo() {
         <div className="flex items-center space-x-2 font-mono text-sm font-bold">
           <Terminal className="w-4 h-4 text-[#4DA65C]" />
           <span>{t("演示环境：", "Demo Environment: ")}{id}</span>
-          <span className="bg-red-500 w-2 h-2 rounded-full animate-pulse ml-4" />
-          <span className="text-gray-400 font-normal">{t("在线", "LIVE")}</span>
+          <span className="bg-[#4DA65C] w-2 h-2 rounded-full animate-pulse ml-4" />
+          <span className="text-[#4DA65C] font-normal">{t("在线", "LIVE")}</span>
         </div>
         <div className="flex space-x-3">
           <div className="w-3 h-3 bg-gray-600 rounded-full" />
@@ -34,21 +35,25 @@ export function Demo() {
         </div>
       </header>
 
-      <main className="flex-1 flex p-6 gap-6 relative">
-        <div className="flex-1 bg-white border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center p-12 text-center text-gray-400 relative overflow-hidden">
-           <div className="absolute inset-0 bg-pixel-grid opacity-10 pointer-events-none" />
-           <div className="w-16 h-16 bg-gray-100 border-2 border-gray-300 rounded-full flex items-center justify-center mb-6">
-             <div className="w-8 h-8 border-4 border-t-[#1D79E4] border-gray-300 rounded-full animate-spin"></div>
-           </div>
-           <h2 className="text-2xl font-bold text-gray-700 mb-2 font-mono">{t("正在加载沙箱...", "Loading Sandbox...")}</h2>
-           <p className="max-w-md">{t("这是交互式演示的简约容器。实际的模拟数据与功能将在后续注入。", "This is a minimalist wrapper for the interactive demo. The actual mock data and functionality will be injected here later.")}</p>
+      <main className="flex-1 flex p-6 gap-6 relative min-h-0">
+        {id === "eval-framework" ? (
+          <EvalFrameworkDemo />
+        ) : (
+          <div className="flex-1 bg-white border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center p-12 text-center text-gray-400 relative overflow-hidden">
+             <div className="absolute inset-0 bg-pixel-grid opacity-10 pointer-events-none" />
+             <div className="w-16 h-16 bg-gray-100 border-2 border-gray-300 rounded-full flex items-center justify-center mb-6">
+               <div className="w-8 h-8 border-4 border-t-[#1D79E4] border-gray-300 rounded-full animate-spin"></div>
+             </div>
+             <h2 className="text-2xl font-bold text-gray-700 mb-2 font-mono">{t("正在加载沙箱...", "Loading Sandbox...")}</h2>
+             <p className="max-w-md">{t("这是交互式演示的简约容器。实际的模拟数据与功能将在后续注入。", "This is a minimalist wrapper for the interactive demo. The actual mock data and functionality will be injected here later.")}</p>
 
-           <div className="mt-8 grid grid-cols-2 gap-4 w-full max-w-lg opacity-50 pointer-events-none">
-             <div className="h-32 bg-gray-100 rounded border border-gray-200"></div>
-             <div className="h-32 bg-gray-100 rounded border border-gray-200"></div>
-             <div className="h-24 bg-gray-100 rounded border border-gray-200 col-span-2"></div>
-           </div>
-        </div>
+             <div className="mt-8 grid grid-cols-2 gap-4 w-full max-w-lg opacity-50 pointer-events-none">
+               <div className="h-32 bg-gray-100 rounded border border-gray-200"></div>
+               <div className="h-32 bg-gray-100 rounded border border-gray-200"></div>
+               <div className="h-24 bg-gray-100 rounded border border-gray-200 col-span-2"></div>
+             </div>
+          </div>
+        )}
       </main>
 
       {/* Floating Action Button */}
