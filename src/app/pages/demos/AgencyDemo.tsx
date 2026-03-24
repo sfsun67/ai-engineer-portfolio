@@ -555,7 +555,7 @@ function StreamingMessage({ content }: { content: string }) {
 // Main demo component
 // ---------------------------------------------------------------------------
 
-export function EvalFrameworkDemo() {
+export function AgencyDemo() {
   const { t, lang } = useLanguage();
   const healthy = useHealthCheck();
 

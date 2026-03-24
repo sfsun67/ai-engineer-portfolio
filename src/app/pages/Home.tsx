@@ -76,19 +76,19 @@ const projects: Project[] = [
     size: "medium",
   },
   {
-    id: "eval-framework",
+    id: "agency-personalities-trails",
     title: {
-      zh: "社会模拟多智能体系统（建设中...）",
-      en: "Social Simulation Multi-Agent System",
+      zh: "Agency: 文学角色性格特征数据集与评测工具链",
+      en: "Agency: Personalities-Trails",
     },
     description: {
-      zh: "基于认知心理学的角色扮演与社会模拟系统，构建大规模场景数据用于模型对齐与推理增强。",
-      en: "Cognitive psychology-based role-playing and social simulation system, generating large-scale scenario data for model alignment and reasoning enhancement.",
+      zh: "面向人工智能体研究的双语文学分析数据集，配套特征提取流水线、RAG角色扮演API与评测基准（RPBench / SocialBench）。",
+      en: "Bilingual literary analysis dataset for artificial agency research, with trait extraction pipeline, RAG-powered role-play API, and evaluation benchmarks (RPBench / SocialBench).",
     },
     categories: ["algorithm", "founder"],
     metrics: [
-      { zh: "1.8w+场景数据", en: "18K+ Scenarios" },
-      { zh: "7B+模型性能↑90%", en: "7B+ Model +90%" },
+      { zh: "5w+文学分析记录", en: "50K+ Analysis Records" },
+      { zh: "RAG性能↑76%", en: "RAG +76% Win Rate" },
     ],
     theme: { bg: "bg-[#F48B29]", text: "text-white", shadow: "hover:shadow-[6px_6px_0px_#F48B29]" },
     size: "small",

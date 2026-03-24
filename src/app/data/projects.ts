@@ -53,16 +53,16 @@ export const projectsData: Project[] = [
     reflection: "出海产品的技术挑战不仅在算法本身，更在于对目标市场内容偏好的理解与适配。"
   },
   {
-    id: "eval-framework",
-    title: "社会模拟多智能体系统（建设中...）",
-    description: "基于认知心理学的角色扮演与社会模拟系统，构建大规模场景数据用于模型对齐与推理增强。",
+    id: "agency-personalities-trails",
+    title: "Agency: 文学角色性格特征数据集与评测工具链",
+    description: "面向人工智能体研究的双语文学分析数据集，配套特征提取流水线、RAG角色扮演API与评测基准（RPBench / SocialBench）。",
     roles: ["算法负责人", "创始人/招聘经理"],
-    tags: ["Cognitive Psychology", "Multi-Agent", "Model Alignment", "ReAct"],
-    imageQuery: "brain neural network psychology",
-    metrics: ["1.8w+场景数据", "7B+模型性能↑90%", "社会能力75%→90%"],
-    systemDesign: "基于认知科学、心理学与语言学理论构建角色扮演/社会模拟结构化训练数据。角色—情景CoT数据链与RAG增强链路。ReAct多智能体协同框架。",
-    challenges: "认知心理学理论到计算模型的形式化转换。确保生成场景数据的多样性与真实性。",
-    outcomes: "构建1.8w+场景数据。7B+模型角色扮演性能提升90%以上，社会能力评测从75%提升至90%。",
-    reflection: "数据质量远比数据数量重要。认知心理学为AI对齐提供了有价值的理论框架。"
+    tags: ["RAG", "Literary Analysis", "Role-Play", "ChromaDB", "FastAPI"],
+    imageQuery: "literature book ai analysis",
+    metrics: ["5w+文学分析记录", "RAG性能↑76%", "社会能力92.9%"],
+    systemDesign: "从EPUB文学文本中提取角色画像、心理特征与行为线索，构建412个JSON文件（~5.3GB）的双语结构化数据集。基于FastAPI + ChromaDB + Gemini Embeddings构建RAG角色扮演API，支持SSE流式对话。通过RPBench和SocialBench两套评测基准验证RAG增强效果。",
+    challenges: "跨语言文学分析的结构化提取与质量控制。RAG检索策略对不同规模模型的差异化影响。角色扮演与社会性评测基准的设计与可复现性。",
+    outcomes: "构建5万+文学分析记录的双语数据集。RPBench评测中qwen2.5-32b加RAG后胜率76.1%（无RAG仅23.7%）。SocialBench自我意识准确率92.9%，社会偏好准确率80.3%。",
+    reflection: "RAG对强模型有显著提升但对弱模型无效甚至有害，这揭示了检索增强与模型能力之间的协同门槛。数据质量远比数据数量重要。"
   }
 ];

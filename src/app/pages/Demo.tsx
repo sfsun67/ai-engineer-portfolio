@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { MessageSquare, Code, ArrowLeft, Copy, CheckCircle2, Terminal } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
-import { EvalFrameworkDemo } from "./demos/EvalFrameworkDemo";
+import { AgencyDemo } from "./demos/AgencyDemo";
 
 export function Demo() {
   const { id } = useParams();
@@ -36,8 +36,8 @@ export function Demo() {
       </header>
 
       <main className="flex-1 flex p-6 gap-6 relative min-h-0">
-        {id === "eval-framework" ? (
-          <EvalFrameworkDemo />
+        {id === "agency-personalities-trails" ? (
+          <AgencyDemo />
         ) : (
           <div className="flex-1 bg-white border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center p-12 text-center text-gray-400 relative overflow-hidden">
              <div className="absolute inset-0 bg-pixel-grid opacity-10 pointer-events-none" />
@@ -75,7 +75,7 @@ export function Demo() {
 
               <button
                 className="group flex items-center bg-[#1D79E4] text-white px-4 py-2 text-sm font-bold border-2 border-black pixel-shadow-sm hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all w-max"
-                onClick={() => window.open("https://github.com", "_blank")}
+                onClick={() => window.open(id === "agency-personalities-trails" ? "https://github.com/sfsun67/Agency" : "https://github.com", "_blank")}
               >
                 {t("查看源码", "View Source")} <Code className="w-4 h-4 ml-2" />
               </button>

@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router";
-import { PlayCircle, ArrowLeft, ArrowUpRight } from "lucide-react";
+import { PlayCircle, ArrowLeft, ArrowUpRight, Github } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 
 interface BiText {
@@ -17,6 +17,7 @@ interface ProjectData {
   techChallenges: BiText[];
   outcomes: BiText;
   reflection: BiText;
+  repoUrl?: string;
 }
 
 const projectData: Record<string, ProjectData> = {
@@ -155,50 +156,51 @@ const projectData: Record<string, ProjectData> = {
       en: "The technical challenge of overseas products isn't just the algorithm itself — it's understanding and adapting to target market content preferences. Building a data flywheel is the core driver for continuous product iteration.",
     },
   },
-  "eval-framework": {
+  "agency-personalities-trails": {
     title: {
-      zh: "社会模拟多智能体系统（建设中...）",
-      en: "Social Simulation Multi-Agent System",
+      zh: "Agency: 文学角色性格特征数据集与评测工具链",
+      en: "Agency: Personalities-Trails",
     },
-    emoji: "🧠",
+    emoji: "📚",
     description: {
-      zh: "中国电信人工智能研究院 | 认知心理学 / Multi-Agent / 模型对齐",
-      en: "China Telecom AI Research | Cognitive Psychology / Multi-Agent / Model Alignment",
+      zh: "RAG / FastAPI / ChromaDB / vLLM / LangChain",
+      en: "RAG / FastAPI / ChromaDB / vLLM / LangChain",
     },
     tldr: {
-      zh: "基于认知心理学框架构建社会模拟多智能体系统（建设中...），生成1.8w+场景数据，将7B+模型角色扮演性能提升90%以上，社会能力评测从75%提升至90%。",
-      en: "Built a social simulation multi-agent system based on cognitive psychology frameworks, generating 18K+ scenario data, improving 7B+ model role-playing performance by 90%+, and social capability scores from 75% to 90%.",
+      zh: "构建面向人工智能体研究的双语文学分析数据集（412个JSON文件，~5.3GB，5万+记录），配套特征提取流水线、RAG驱动的文学角色扮演API，以及RPBench与SocialBench两套评测基准。RPBench验证RAG对强模型的显著提升（qwen2.5-32b胜率从23.7%→76.1%），SocialBench自我意识准确率达92.9%。",
+      en: "Built a bilingual literary analysis dataset (412 JSON files, ~5.3 GB, 50K+ records) for artificial agency research, with a trait extraction pipeline, a RAG-powered literary role-play API, and two evaluation benchmarks (RPBench, SocialBench). RPBench shows RAG dramatically boosts strong models (qwen2.5-32b: 23.7% → 76.1% win rate). SocialBench self-awareness accuracy reaches 92.9%.",
     },
     whyItMatters: {
-      zh: "模型对齐与推理能力的提升需要高质量、多样化的训练数据。基于认知心理学的社会模拟框架能生成具有真实社会交互特征的场景数据，显著提升模型的角色扮演与社会推理能力。",
-      en: "Improving model alignment and reasoning requires high-quality, diverse training data. The cognitive psychology-based social simulation framework generates scenario data with realistic social interaction characteristics, significantly enhancing role-playing and social reasoning capabilities.",
+      zh: "RAG对角色扮演能力的提升存在显著的模型能力门槛——强模型（qwen2.5-32b）加RAG后胜率从23.7%飙升至76.1%，而弱模型（0.5b）反而下降。这一发现揭示了检索增强并非万能银弹，模型自身的理解与推理能力是RAG发挥作用的前提。完整的「数据集→提取→API→评测」工具链使这一研究可复现、可迭代。",
+      en: "RAG's impact on role-playing has a clear model-capacity threshold — strong models (qwen2.5-32b) jump from 23.7% to 76.1% win rate with RAG, while weak models (0.5b) actually degrade. This reveals that retrieval augmentation is no silver bullet; the model's own comprehension and reasoning ability is a prerequisite. The end-to-end toolchain (dataset → extraction → API → evaluation) makes the research reproducible and iteratable.",
     },
     systemDesign: {
-      zh: "基于认知科学、心理学与语言学理论，从文学文本中抽取情景、角色画像、心理特征与行为线索，构建面向角色扮演/社会模拟任务的结构化训练数据。设计角色—情景CoT数据链与RAG增强链路，基于ReAct构建多智能体协同框架，增强模型在社会模拟、情感交互与创意生成任务中的表现。",
-      en: "Based on cognitive science, psychology, and linguistics theory, extracting scenarios, character profiles, psychological traits, and behavioral cues from literary texts to construct structured training data for role-playing/social simulation tasks. Designed role-scenario CoT data chains and RAG-enhanced pipelines, built multi-agent collaboration framework based on ReAct, enhancing model performance in social simulation, emotional interaction, and creative generation tasks.",
+      zh: "四层架构：① 数据层——从EPUB文学文本中提取角色画像、心理特征、行为线索与场景信息，构建412个JSON文件的双语结构化数据集（覆盖人物介绍、性格特征、自我认知、场景四个维度）。② 提取层——特征提取流水线（extract/）支持中英文全量提取与GPU加速批处理。③ 服务层——基于FastAPI + ChromaDB + Gemini Embeddings的RAG角色扮演API，支持SSE流式对话、智能角色名去重、断点续传数据导入。④ 评测层——RPBench（5批次角色扮演对局评测）与SocialBench（ACL 2024，9维度社会性评测）。",
+      en: "Four-layer architecture: ① Data layer — extracts character profiles, psychological traits, behavioral cues, and scene info from EPUB literary texts into a bilingual structured dataset of 412 JSON files (covering intro, personality traits, self-awareness, and scene dimensions). ② Extraction layer — trait extraction pipeline (extract/) supporting full Chinese/English extraction and GPU-accelerated batch processing. ③ Service layer — RAG-powered role-play API built on FastAPI + ChromaDB + Gemini Embeddings, with SSE streaming, smart character name deduplication, and checkpoint-resumable ingestion. ④ Evaluation layer — RPBench (5-batch role-play arena) and SocialBench (ACL 2024, 9-dimension sociality evaluation).",
     },
     techChallenges: [
       {
-        zh: "认知心理学理论到计算模型的形式化转换。",
-        en: "Formalizing cognitive psychology theories into computational models.",
+        zh: "跨语言（中英文）文学文本的结构化分析——需要从非结构化的小说文本中稳定提取人物介绍、性格特征、自我认知、场景四个维度的结构化数据，同时保证中英文分析质量一致。",
+        en: "Cross-lingual (Chinese/English) structured analysis of literary text — reliably extracting intro, personality traits, self-awareness, and scene dimensions from unstructured novel text while maintaining consistent quality across languages.",
       },
       {
-        zh: "确保生成场景数据的多样性与真实性。",
-        en: "Ensuring diversity and authenticity of generated scenario data.",
+        zh: "RAG检索策略对不同规模模型的差异化影响——强模型受益显著而弱模型反而受损，需要针对模型能力设计自适应的检索增强策略。",
+        en: "Differential impact of RAG retrieval strategies across model scales — strong models benefit significantly while weak models degrade, requiring adaptive retrieval-augmentation strategies tailored to model capacity.",
       },
       {
-        zh: "小模型（7B级别）在有限数据下的训练效率优化。",
-        en: "Training efficiency optimization for small models (7B-class) with limited data.",
+        zh: "角色扮演与社会性评测基准的设计——RPBench需要控制对局变量确保可比性，SocialBench需要覆盖个体与群体两个层面共9个社会性维度。",
+        en: "Designing role-play and sociality evaluation benchmarks — RPBench must control match variables for comparability, while SocialBench must cover 9 sociality dimensions across individual and group levels.",
       },
     ],
     outcomes: {
-      zh: "构建1.8w+场景数据。角色扮演评测中7B+模型性能提升90%以上，社会能力评测从75%提升至90%。另外参与小说生成大模型项目，在优酷×天池「酷文」挑战赛获决赛第8名（639队）。",
-      en: "Generated 18K+ scenario data. 7B+ model performance improved by 90%+ in role-playing evaluation, social capability scores rose from 75% to 90%. Also participated in novel generation LLM project, reaching finals (8th/639 teams) in Youku × Tianchi challenge.",
+      zh: "构建5万+文学分析记录的双语数据集（412个JSON文件，~5.3GB）。RPBench评测：qwen2.5-32b加RAG胜率76.1%（无RAG仅23.7%），qwen-max加RAG胜率68.8%，gpt4o加RAG胜率57.0%。SocialBench评测：自我意识准确率92.9%（1,728条），社会偏好准确率80.3%（1,922条）。配套完整工具链：特征提取流水线、RAG角色扮演API（支持SSE流式对话）、两套评测基准。",
+      en: "Built a bilingual dataset of 50K+ literary analysis records (412 JSON files, ~5.3 GB). RPBench: qwen2.5-32b with RAG achieves 76.1% win rate (23.7% without), qwen-max 68.8%, gpt4o 57.0%. SocialBench: 92.9% self-awareness accuracy (1,728 items), 80.3% social preference accuracy (1,922 items). Complete toolchain: trait extraction pipeline, RAG role-play API (SSE streaming), and two evaluation benchmarks.",
     },
     reflection: {
-      zh: "数据质量远比数据数量重要。认知心理学为AI对齐提供了有价值的理论框架，但理论到工程实现的gap需要大量实验来弥合。",
-      en: "Data quality matters far more than data quantity. Cognitive psychology provides a valuable theoretical framework for AI alignment, but bridging the gap from theory to engineering requires extensive experimentation.",
+      zh: "RAG对强模型有显著提升但对弱模型无效甚至有害（0.5b模型加RAG后反而从54.9%降至44.7%），这揭示了检索增强与模型能力之间存在协同门槛。数据质量远比数据数量重要——结构化的文学分析比原始文本对角色扮演的提升更为显著。完整的「数据→提取→服务→评测」闭环是确保研究可复现性的关键。",
+      en: "RAG dramatically helps strong models but hurts weak ones (0.5b drops from 54.9% to 44.7% with RAG), revealing a synergy threshold between retrieval augmentation and model capacity. Data quality matters far more than quantity — structured literary analysis improves role-play performance more significantly than raw text. The complete data → extraction → service → evaluation loop is key to ensuring research reproducibility.",
     },
+    repoUrl: "https://github.com/sfsun67/Agency",
   },
 };
 
@@ -224,9 +226,24 @@ export function ProjectDetail() {
           {bt(project.title)}
         </h1>
 
-        <p className="text-xl text-gray-500 font-medium mb-12">
+        <p className="text-xl text-gray-500 font-medium mb-8">
           {bt(project.description)}
         </p>
+
+        {project.repoUrl && (
+          <a
+            href={project.repoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 px-5 py-2.5 bg-gray-900 text-white font-bold text-sm border-2 border-black pixel-shadow-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all mb-12"
+          >
+            <Github className="w-5 h-5" />
+            <span className="font-mono">{project.repoUrl.replace("https://github.com/", "")}</span>
+            <ArrowUpRight className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" />
+          </a>
+        )}
+
+        {!project.repoUrl && <div className="mb-4" />}
 
         {/* CTA Banner */}
         <div className="bg-[#E43B44]/10 border-2 border-[#E43B44] p-6 mb-12 flex flex-col sm:flex-row items-center justify-between gap-6 relative">
