@@ -627,8 +627,12 @@ export function EvalFrameworkDemo() {
     setSelectedCharacter(char);
     responseIndexRef.current = 0;
     setStreamingContent("");
+    setPhase("CHAT");
 
     if (healthy && selectedBook) {
+      setMessages([]);
+      setIsResponding(true);
+
       try {
         const { sessionId: sid, greeting } = await apiCreateSession(
           selectedBook.id,
@@ -636,11 +640,12 @@ export function EvalFrameworkDemo() {
         );
         setSessionId(sid);
         setMessages([{ role: "character", content: greeting, isStreaming: true }]);
-        setPhase("CHAT");
+        setIsResponding(false);
         return;
       } catch {
         // fall through to mock
       }
+      setIsResponding(false);
     }
 
     setSessionId(null);
@@ -651,7 +656,6 @@ export function EvalFrameworkDemo() {
         isStreaming: true,
       },
     ]);
-    setPhase("CHAT");
   };
 
   const handleBack = () => {
