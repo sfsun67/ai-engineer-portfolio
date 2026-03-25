@@ -22,6 +22,24 @@ interface Project {
 
 const projects: Project[] = [
   {
+    id: "agency-personalities-trails",
+    title: {
+      zh: "Agency: 文学角色性格特征数据集与评测工具链",
+      en: "Agency: Personalities-Trails",
+    },
+    description: {
+      zh: "面向人工智能体研究的双语文学分析数据集，配套特征提取流水线、RAG角色扮演API与评测基准（RPBench / SocialBench）。",
+      en: "Bilingual literary analysis dataset for artificial agency research, with trait extraction pipeline, RAG-powered role-play API, and evaluation benchmarks (RPBench / SocialBench).",
+    },
+    categories: ["algorithm", "founder"],
+    metrics: [
+      { zh: "5w+文学分析记录", en: "50K+ Analysis Records" },
+      { zh: "RAG性能↑76%", en: "RAG +76% Win Rate" },
+    ],
+    theme: { bg: "bg-[#F48B29]", text: "text-white", shadow: "hover:shadow-[6px_6px_0px_#F48B29]" },
+    size: "small",
+  },
+  {
     id: "agent-system",
     title: {
       zh: "AI广告视频混剪智能体系统（建设中...）",
@@ -74,24 +92,6 @@ const projects: Project[] = [
     ],
     theme: { bg: "bg-[#F4D330]", text: "text-gray-900", shadow: "hover:shadow-[6px_6px_0px_#F4D330]" },
     size: "medium",
-  },
-  {
-    id: "agency-personalities-trails",
-    title: {
-      zh: "Agency: 文学角色性格特征数据集与评测工具链",
-      en: "Agency: Personalities-Trails",
-    },
-    description: {
-      zh: "面向人工智能体研究的双语文学分析数据集，配套特征提取流水线、RAG角色扮演API与评测基准（RPBench / SocialBench）。",
-      en: "Bilingual literary analysis dataset for artificial agency research, with trait extraction pipeline, RAG-powered role-play API, and evaluation benchmarks (RPBench / SocialBench).",
-    },
-    categories: ["algorithm", "founder"],
-    metrics: [
-      { zh: "5w+文学分析记录", en: "50K+ Analysis Records" },
-      { zh: "RAG性能↑76%", en: "RAG +76% Win Rate" },
-    ],
-    theme: { bg: "bg-[#F48B29]", text: "text-white", shadow: "hover:shadow-[6px_6px_0px_#F48B29]" },
-    size: "small",
   }
 ];
 
