@@ -301,10 +301,10 @@ function FeedbackInput({
         </div>
         <Button
           size="sm"
-          className="bg-[#1D79E4] hover:bg-[#1D79E4]/90 text-white gap-1 shrink-0 pixel-shadow-sm border-2 border-black mb-0.5"
+          className="bg-[#1D79E4] hover:bg-[#1D79E4]/90 text-white gap-1 shrink-0 border-2 border-black mb-0.5 px-4 py-2"
           onClick={onSubmit}
         >
-          <Send className="w-3 h-3" />
+          <Send className="w-3 h-3 pointer-events-none" />
           发送
         </Button>
       </div>
@@ -360,12 +360,23 @@ export function ChatPanel({
   onFeedbackSubmit,
   onRestart,
 }: ChatPanelProps) {
-  const bottomRef = useRef<HTMLDivElement>(null)
   const scrollRef = useRef<HTMLDivElement>(null)
   const userScrolledUp = useRef(false)
+  const isProgrammaticScroll = useRef(false)
 
-  // Track user scroll position
+  const scrollToBottom = useCallback(() => {
+    const el = scrollRef.current
+    if (!el || userScrolledUp.current) return
+    isProgrammaticScroll.current = true
+    el.scrollTop = el.scrollHeight
+    requestAnimationFrame(() => {
+      isProgrammaticScroll.current = false
+    })
+  }, [])
+
+  // Track user scroll position — ignore programmatic scrolls
   const handleScroll = useCallback(() => {
+    if (isProgrammaticScroll.current) return
     const el = scrollRef.current
     if (!el) return
     const isNearBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 80
@@ -379,13 +390,10 @@ export function ChatPanel({
     }
   }, [checkpoint, showFeedbackInput])
 
-  // Smart auto-scroll: only when user is near bottom
+  // Auto-scroll when content changes — respects user scroll position
   useEffect(() => {
-    if (userScrolledUp.current) return
-    requestAnimationFrame(() => {
-      bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
-    })
-  }, [messages.length, typingText, checkpoint, showFeedbackInput])
+    scrollToBottom()
+  }, [messages.length, typingText, checkpoint, showFeedbackInput, scrollToBottom])
 
   return (
     <div className="h-full flex flex-col bg-gray-50/50">
@@ -436,7 +444,6 @@ export function ChatPanel({
           </motion.div>
         )}
 
-        <div ref={bottomRef} />
       </div>
 
       {/* Wrong choice dialog */}
