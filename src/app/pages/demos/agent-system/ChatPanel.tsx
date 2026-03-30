@@ -1,5 +1,5 @@
-import { useRef, useEffect, useState, useCallback } from 'react'
-import { motion, AnimatePresence } from 'motion/react'
+import { useEffect, useState } from 'react'
+import { motion } from 'motion/react'
 import { Bot, User, Send, CheckCircle, AlertTriangle, Play, RotateCcw, FileText, Eye } from 'lucide-react'
 import { Card, CardContent } from '@/app/components/ui/card'
 import { Button } from '@/app/components/ui/button'
@@ -360,47 +360,13 @@ export function ChatPanel({
   onFeedbackSubmit,
   onRestart,
 }: ChatPanelProps) {
-  const scrollRef = useRef<HTMLDivElement>(null)
-  const userScrolledUp = useRef(false)
-  const isProgrammaticScroll = useRef(false)
-
-  const scrollToBottom = useCallback(() => {
-    const el = scrollRef.current
-    if (!el || userScrolledUp.current) return
-    isProgrammaticScroll.current = true
-    el.scrollTop = el.scrollHeight
-    requestAnimationFrame(() => {
-      isProgrammaticScroll.current = false
-    })
-  }, [])
-
-  // Track user scroll position — ignore programmatic scrolls
-  const handleScroll = useCallback(() => {
-    if (isProgrammaticScroll.current) return
-    const el = scrollRef.current
-    if (!el) return
-    const isNearBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 80
-    userScrolledUp.current = !isNearBottom
-  }, [])
-
-  // Force-scroll to bottom on checkpoint interactions
-  useEffect(() => {
-    if (checkpoint || showFeedbackInput) {
-      userScrolledUp.current = false
-    }
-  }, [checkpoint, showFeedbackInput])
-
-  // Auto-scroll when content changes — respects user scroll position
-  useEffect(() => {
-    scrollToBottom()
-  }, [messages.length, typingText, checkpoint, showFeedbackInput, scrollToBottom])
 
   return (
     <div className="h-full flex flex-col bg-gray-50/50">
       <StatusBar label={statusLabel} isComplete={isComplete} isTyping={isTyping} />
 
       {/* Messages area */}
-      <div ref={scrollRef} onScroll={handleScroll} className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map((msg) => (
           <MessageBubble key={msg.id} msg={msg} />
         ))}
@@ -409,21 +375,17 @@ export function ChatPanel({
         {typingText !== null && <TypingIndicator text={typingText} />}
 
         {/* Checkpoint */}
-        <AnimatePresence>
-          {checkpoint && !showFeedbackInput && (
-            <CheckpointUI checkpoint={checkpoint} onChoice={onCheckpointChoice} />
-          )}
-        </AnimatePresence>
+        {checkpoint && !showFeedbackInput && (
+          <CheckpointUI checkpoint={checkpoint} onChoice={onCheckpointChoice} />
+        )}
 
         {/* Feedback input for checkpoint 1 */}
-        <AnimatePresence>
-          {showFeedbackInput && checkpoint && (
-            <FeedbackInput
-              defaultValue={checkpoint.defaultFeedback ?? ''}
-              onSubmit={onFeedbackSubmit}
-            />
-          )}
-        </AnimatePresence>
+        {showFeedbackInput && checkpoint && (
+          <FeedbackInput
+            defaultValue={checkpoint.defaultFeedback ?? ''}
+            onSubmit={onFeedbackSubmit}
+          />
+        )}
 
         {/* Restart button when complete */}
         {isComplete && (

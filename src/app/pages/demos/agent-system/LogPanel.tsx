@@ -25,12 +25,11 @@ interface LogPanelProps {
 }
 
 export function LogPanel({ logs }: LogPanelProps) {
-  const bottomRef = useRef<HTMLDivElement>(null)
+  const scrollRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    requestAnimationFrame(() => {
-      bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
-    })
+    const el = scrollRef.current
+    if (el) el.scrollTop = el.scrollHeight
   }, [logs.length])
 
   return (
@@ -43,7 +42,7 @@ export function LogPanel({ logs }: LogPanelProps) {
       </div>
 
       {/* Log entries */}
-      <div className="flex-1 overflow-y-auto p-2 space-y-0.5 font-mono text-[11px] leading-5">
+      <div ref={scrollRef} className="flex-1 overflow-y-auto p-2 space-y-0.5 font-mono text-[11px] leading-5">
         {logs.length === 0 && (
           <div className="flex items-center justify-center h-full text-gray-600 text-xs">
             等待工作流启动...
@@ -69,7 +68,6 @@ export function LogPanel({ logs }: LogPanelProps) {
             </span>
           </motion.div>
         ))}
-        <div ref={bottomRef} />
       </div>
     </div>
   )
