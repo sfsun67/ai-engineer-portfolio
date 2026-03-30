@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { MessageSquare, Code, ArrowLeft, Copy, CheckCircle2, Terminal } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { AgencyDemo } from "./demos/AgencyDemo";
+import { AgentSystemDemo } from "./demos/agent-system";
 
 export function Demo() {
   const { id } = useParams();
@@ -38,6 +39,8 @@ export function Demo() {
       <main className="flex-1 flex p-6 gap-6 relative min-h-0">
         {id === "agency-personalities-trails" ? (
           <AgencyDemo />
+        ) : id === "agent-system" ? (
+          <AgentSystemDemo />
         ) : (
           <div className="flex-1 bg-white border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center p-12 text-center text-gray-400 relative overflow-hidden">
              <div className="absolute inset-0 bg-pixel-grid opacity-10 pointer-events-none" />
