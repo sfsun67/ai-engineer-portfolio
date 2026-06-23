@@ -4,9 +4,11 @@ import fs from 'fs'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(({ mode, command }) => {
   const env = loadEnv(mode, process.cwd(), '')
   const isLocal = mode === 'localdev'
+  // Only the dev server needs the HTTPS cert; `build` must not require it.
+  const isServe = command === 'serve'
 
   return {
     plugins: [react(), tailwindcss()],
@@ -17,7 +19,7 @@ export default defineConfig(({ mode }) => {
     },
     assetsInclude: ['**/*.svg', '**/*.csv'],
     server: {
-      ...(isLocal
+      ...(isLocal || !isServe
         ? { port: 5173 }
         : {
             https: {

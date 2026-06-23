@@ -47,9 +47,23 @@ export function Layout() {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
         <Outlet />
       </main>
+
+      <footer className="border-t-2 border-black bg-white/80 mt-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center text-xs text-gray-500">
+          备案号{" "}
+          <a
+            href="https://beian.miit.gov.cn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#1D79E4] hover:underline transition-colors"
+          >
+            粤ICP备2026081761号-1
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }

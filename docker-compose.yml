@@ -1,0 +1,10 @@
+# Portfolio site (www.positivevibe.cn) — static SPA served by nginx.
+# Bound to localhost only; the host edge nginx terminates TLS and proxies here.
+services:
+  portfolio:
+    build: .
+    image: portfolio-site:latest
+    container_name: portfolio-site
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:80"
