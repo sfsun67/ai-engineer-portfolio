@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router";
-import { Code, Brain, Target, Rocket, ArrowUpRight, CheckCircle2, Mail } from "lucide-react";
+import { Code, Brain, Target, Rocket, CheckCircle2, Mail } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 
 type Category = "all" | "algorithm" | "engineering" | "product" | "founder";
@@ -240,22 +239,20 @@ export function Home() {
       {/* Projects Bento Box */}
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 grid-flow-dense">
         {filteredProjects.map((project) => (
-          <Link
+          <div
             key={project.id}
-            to={`/project/${project.id}`}
-            className={`group block border-2 border-black p-6 bg-white transition-all duration-200 shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 font-sans flex flex-col justify-between ${
+            className={`group block border-2 border-black p-6 bg-white transition-all duration-200 shadow-[4px_4px_0px_rgba(0,0,0,1)] font-sans flex flex-col justify-between ${
               project.size === "large" ? "md:col-span-2 lg:col-span-2" : "col-span-1"
-            } ${project.theme.shadow}`}
+            }`}
           >
             <div>
               <div className="flex justify-between items-start mb-4">
                 <div className={`w-12 h-12 flex items-center justify-center rounded-sm border-2 border-black pixel-shadow-sm ${project.theme.bg} ${project.theme.text}`}>
                   <Rocket className="w-6 h-6" />
                 </div>
-                <ArrowUpRight className="w-6 h-6 text-gray-400 group-hover:text-black transition-colors" />
               </div>
 
-              <h3 className="text-2xl font-bold mb-2 group-hover:underline decoration-2 underline-offset-4">{bt(project.title)}</h3>
+              <h3 className="text-2xl font-bold mb-2">{bt(project.title)}</h3>
               <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6">{bt(project.description)}</p>
             </div>
 
@@ -277,7 +274,7 @@ export function Home() {
                 ))}
               </div>
             </div>
-          </Link>
+          </div>
         ))}
       </section>
     </div>
