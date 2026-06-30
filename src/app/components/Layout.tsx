@@ -52,16 +52,26 @@ export function Layout() {
       </main>
 
       <footer className="border-t-2 border-black bg-white/80 mt-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center text-xs text-gray-500">
-          备案号{" "}
-          <a
-            href="https://beian.miit.gov.cn/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-[#1D79E4] hover:underline transition-colors"
-          >
-            粤ICP备2026081761号-1
-          </a>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-xs text-gray-500">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
+            <a
+              href="https://beian.miit.gov.cn/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#1D79E4] hover:underline transition-colors"
+            >
+              粤ICP备2026081761号-1
+            </a>
+            <a
+              href="https://beian.mps.gov.cn/#/query/webSearch?code=44030002014026"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 hover:text-[#1D79E4] hover:underline transition-colors"
+            >
+              <img src="/beian-icon.png" alt="" className="h-4 w-4 shrink-0" />
+              <span>粤公网安备44030002014026号</span>
+            </a>
+          </div>
         </div>
       </footer>
     </div>
